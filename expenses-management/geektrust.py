@@ -1,17 +1,18 @@
 from sys import argv
+from src.Runable import Runnable
 
-def main():
-    
-    """
-    Sample code to read inputs from the file
+class Main:
+    def __init__(self):
+        self.r = Runnable()
 
-    if len(argv) != 2:
-        raise Exception("File path not entered")
-    file_path = argv[1]
-    f = open(file_path, 'r')
-    Lines = f.readlines()
-    //Add your code here to process the input commands
-    """
-    
+    def main(self):
+        if len(argv) != 2:
+            raise Exception("File path not entered")
+        file_path = argv[1]
+        # Open and read the file
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            self.r.process_commands(lines)
+            
 if __name__ == "__main__":
-    main()
+    Main().main()
