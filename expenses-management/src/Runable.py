@@ -16,9 +16,9 @@ class Runnable:
     else:
       member_arr = []
       for member in member_names:
-        if filter_name == member:
-          continue
-        elif member in self.house.rooms.keys():
+        if member not in self.house.rooms.keys():
+          raise Exception(ExpenseConstants.MEMBER_NOT_FOUND)
+        elif filter_name != member:
           member_arr.append(self.house.rooms[member])
       return member_arr
 
